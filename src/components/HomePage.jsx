@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserMd, FaMicroscope, FaPills, FaUserNurse, FaBrain, FaAppleAlt } from 'react-icons/fa';
 import { useBooking } from '../context/BookingContext';
+import SEO from './SEO';
 
 const HomePage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,7 +99,49 @@ const HomePage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <>
+            <SEO 
+                title="Expert Healthcare Services at Your Convenience"
+                description="ZOE Healthcare brings doctor consultations, diagnostic tests, pharmacy support, home nursing care, counselling & nutrition services — all in one place. Accessible, reliable, and patient-focused care."
+                keywords="healthcare services, doctor consultations, diagnostic services, pharmacy, home nursing, medical counselling, nutrition services, telemedicine, online doctor"
+                canonicalUrl="https://zoe-healthcare.com/"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "HealthcareOrganization",
+                    "name": "ZOE Healthcare",
+                    "url": "https://zoe-healthcare.com",
+                    "logo": "https://zoe-healthcare.com/images/logo.png",
+                    "description": "Complete healthcare services including doctor consultations, diagnostics, pharmacy, home nursing, counselling and nutrition services.",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressCountry": "IN",
+                        "addressLocality": "Multiple Cities",
+                        "addressRegion": "India"
+                    },
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91-9876543210",
+                        "contactType": "customer service",
+                        "availableLanguage": ["English", "Hindi"]
+                    },
+                    "sameAs": [
+                        "https://www.facebook.com/ZOEHealthcare",
+                        "https://www.twitter.com/ZOEHealthcare",
+                        "https://www.instagram.com/ZOEHealthcare"
+                    ],
+                    "openingHours": "Mo-Su 00:00-23:59",
+                    "priceRange": "$$",
+                    "serviceType": [
+                        "Doctor Consultation",
+                        "Diagnostic Services",
+                        "Pharmacy Services",
+                        "Home Nursing",
+                        "Medical Counselling",
+                        "Nutrition Services"
+                    ]
+                }}
+            />
+            <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
             <section className="relative h-[600px] overflow-hidden">
                 {heroSlides.map((slide, index) => (
@@ -351,6 +394,7 @@ const HomePage = () => {
                 </div>
             </section>
         </div>
+        </>
     );
 };
 

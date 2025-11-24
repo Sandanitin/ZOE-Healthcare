@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const BookingContext = createContext();
 
@@ -21,6 +22,10 @@ export const BookingProvider = ({ children }) => {
             {children}
         </BookingContext.Provider>
     );
+};
+
+BookingProvider.propTypes = {
+    children: PropTypes.node.isRequired
 };
 
 export const useBooking = () => useContext(BookingContext);

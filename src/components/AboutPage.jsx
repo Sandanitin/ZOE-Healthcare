@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
     return (
@@ -27,7 +26,7 @@ const AboutPage = () => {
                                 />
                                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
                                     <p className="text-white text-lg italic font-medium">
-                                        "We treat every patient with empathy, kindness, and understanding."
+                                        &ldquo;We treat every patient with empathy, kindness, and understanding.&rdquo;
                                     </p>
                                 </div>
                             </div>

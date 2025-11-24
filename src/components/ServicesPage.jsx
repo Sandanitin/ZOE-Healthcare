@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 
 const ServicesPage = () => {
@@ -108,7 +107,7 @@ const ServicesPage = () => {
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-primary-900 mb-4">Frequently Asked Questions</h2>
-                        <p className="text-gray-600">Got questions? We've got answers.</p>
+                        <p className="text-gray-600">Got questions? We&apos;ve got answers.</p>
                     </div>
 
                     <div className="space-y-4">

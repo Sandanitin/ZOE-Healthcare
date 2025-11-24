@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { BookingProvider } from './context/BookingContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,23 +14,25 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
-    <BookingProvider>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </main>
-        <Footer />
-        <BookingModal />
-        <WhatsAppButton />
-      </div>
-    </BookingProvider>
+    <HelmetProvider>
+      <BookingProvider>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <BookingModal />
+          <WhatsAppButton />
+        </div>
+      </BookingProvider>
+    </HelmetProvider>
   );
 }
 

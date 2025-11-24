@@ -9,7 +9,7 @@ const ContactPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">Contact Us</h1>
                     <p className="text-xl text-primary-200 max-w-2xl mx-auto">
-                        We're here to help. Reach out to us for any queries or to book an appointment.
+                        We&apos;re here to help. Reach out to us for any queries or to book an appointment.
                     </p>
                 </div>
             </section>
