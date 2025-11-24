@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://zoe-healthcare.com/sitemap.xml
+
+# Block common non-content paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*utm*
+
+# Allow important crawling
+Allow: /src/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+Crawl-delay: 1
