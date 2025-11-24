@@ -11,7 +11,7 @@ const HomePage = () => {
     const heroSlides = [
         {
             id: 1,
-            image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1920&auto=format&fit=crop',
+            image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1920&auto=format&fit=crop',
             title: 'Expert Doctor Consultations',
             subtitle: 'Professional healthcare at your fingertips'
         },
