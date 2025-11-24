@@ -41,18 +41,6 @@ body {
   .glass-card {
     @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300;
   }
-
-  .hero-gradient {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-  }
-
-  .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
-  }
-
-  .nav-link {
-    @apply text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200;
-  }
 }
 
 @layer utilities {

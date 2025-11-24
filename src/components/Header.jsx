@@ -23,8 +23,8 @@ const Header = () => {
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <Link to="/" className="flex items-center">
-                        <span className="text-3xl font-bold text-primary-900">ZOE</span>
-                        <span className="text-3xl font-light text-accent-500 ml-1">Healthcare</span>
+                        <span className="text-2xl md:text-3xl font-bold text-primary-900">ZOE</span>
+                        <span className="text-2xl md:text-3xl font-light text-accent-500 ml-1">Healthcare</span>
                     </Link>
 
                     {/* Desktop Menu */}
