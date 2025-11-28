@@ -178,7 +178,7 @@ Phone: ${formData.phone}`;
                                     />
                                 </div>
                                 <label htmlFor="consent" className="text-xs sm:text-sm text-primary-800 leading-relaxed cursor-pointer">
-                                    I understand that telemedicine is the use of electronic information and communication technologies by healthcare professionals and hereby consent to Dr. Nabi Vali for providing health care services to me via digital telemedicine.
+                                    I understand that telemedicine is the use of electronic information and communication technologies by healthcare professionals and hereby consent to doctor for providing health care services to me via digital telemedicine.
                                     <span className="text-red-500">*</span>
                                 </label>
                             </div>
