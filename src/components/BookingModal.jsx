@@ -6,24 +6,51 @@ const BookingModal = () => {
     const { isModalOpen, closeBooking, selectedService } = useBooking();
     const [formData, setFormData] = useState({
         name: '',
-        phone: '',
-        address: ''
+        age: '',
+        email: '',
+        gender: '',
+        consent: false,
+        sameNumber: true
     });
+    const [errors, setErrors] = useState({});
 
     if (!isModalOpen) return null;
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value, type, checked } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const validationErrors = {};
+
+        if (!formData.name.trim()) validationErrors.name = 'Please provide your full name';
+
+        if (!formData.age) {
+            validationErrors.age = 'Please fill in Age';
+        } else if (Number.isNaN(Number(formData.age)) || Number(formData.age) <= 0) {
+            validationErrors.age = 'Enter a valid age';
+        }
+
+        if (!formData.gender) validationErrors.gender = 'Please select a gender';
+        if (!formData.consent) validationErrors.consent = 'Please accept terms';
+
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length) return;
+
         const message = `Hello, I would like to book a consultation for ${selectedService || 'General Inquiry'}.
     
 Name: ${formData.name}
-Phone: ${formData.phone}
-Address: ${formData.address}`;
+Age: ${formData.age}
+Gender: ${formData.gender}
+Email: ${formData.email || 'Not provided'}
+WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/919581224365?text=${encodedMessage}`;
@@ -45,56 +72,120 @@ Address: ${formData.address}`;
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                    <div className="bg-blue-50 p-4 rounded-lg text-sm text-primary-800 mb-4">
-                        Please provide your details before proceeding to WhatsApp.
+                <form onSubmit={handleSubmit} className="p-6 space-y-5">
+                    <div className="flex items-start gap-3 bg-blue-50 p-4 rounded-xl text-sm text-primary-800">
+                        <div className="flex-shrink-0 mt-0.5">
+                            <input
+                                type="checkbox"
+                                id="sameNumber"
+                                name="sameNumber"
+                                checked={formData.sameNumber}
+                                onChange={handleChange}
+                                className="w-4 h-4 text-accent-500 rounded border-gray-300 focus:ring-accent-500"
+                            />
+                        </div>
+                        <label htmlFor="sameNumber" className="leading-relaxed cursor-pointer">
+                            My mobile number 9581224365 and my WhatsApp number are the same.
+                        </label>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Patient Name</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Patient&apos;s Full Name<span className="text-red-500">*</span>
+                        </label>
                         <input
                             type="text"
                             name="name"
-                            required
                             value={formData.name}
                             onChange={handleChange}
                             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
-                            placeholder="Enter patient name"
+                            placeholder="Please provide your full name"
                         />
+                        {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+                    </div>
+
+                    <div className="flex items-end gap-4">
+                        <div className="flex-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Patient&apos;s Age<span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="number"
+                                name="age"
+                                min="0"
+                                value={formData.age}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
+                                placeholder="Please fill in Age"
+                            />
+                            {errors.age && <p className="text-xs text-red-500 mt-1">{errors.age}</p>}
+                        </div>
+                        <div className="w-24">
+                            <label className="block text-sm font-medium text-gray-700 mb-1 text-center">Years</label>
+                            <div className="px-4 py-2 rounded-lg border border-gray-200 text-gray-500 text-center select-none">
+                                ▼
+                            </div>
+                        </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Patient&apos;s Email</label>
                         <input
-                            type="tel"
-                            name="phone"
-                            required
-                            value={formData.phone}
+                            type="email"
+                            name="email"
+                            value={formData.email}
                             onChange={handleChange}
                             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
-                            placeholder="Enter contact number"
+                            placeholder="example@mail.com"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                        <textarea
-                            name="address"
-                            required
-                            value={formData.address}
-                            onChange={handleChange}
-                            rows="3"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all resize-none"
-                            placeholder="Enter full address"
-                        ></textarea>
+                        <label className="block text-sm font-medium text-gray-700 mb-3">Gender<span className="text-red-500">*</span></label>
+                        <div className="grid grid-cols-3 gap-3">
+                            {['Male', 'Female', 'Other'].map((option) => (
+                                <label
+                                    key={option}
+                                    className={`flex items-center justify-center gap-2 border rounded-xl py-3 cursor-pointer transition-all ${
+                                        formData.gender === option ? 'border-primary-600 bg-primary-50 text-primary-900' : 'border-gray-300 text-gray-700 hover:border-primary-200'
+                                    }`}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value={option}
+                                        checked={formData.gender === option}
+                                        onChange={handleChange}
+                                        className="sr-only"
+                                    />
+                                    {option}
+                                </label>
+                            ))}
+                        </div>
+                        {errors.gender && <p className="text-xs text-red-500 mt-2">{errors.gender}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="flex items-start gap-3 text-sm text-gray-700">
+                            <input
+                                type="checkbox"
+                                name="consent"
+                                checked={formData.consent}
+                                onChange={handleChange}
+                                className="mt-1 w-4 h-4 rounded border-gray-300 text-accent-500 focus:ring-accent-500"
+                            />
+                            <span>
+                                I understand that telemedicine uses electronic communication technologies by healthcare professionals. I hereby consent to receiving digital telemedicine services from ZOE Healthcare.
+                            </span>
+                        </label>
+                        {errors.consent && <p className="text-xs text-red-500">{errors.consent}</p>}
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                        className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
                     >
-                        <FaWhatsapp size={20} />
-                        Proceed to WhatsApp
+                        STEP 2 - PROCEED TO PAY ₹199
                     </button>
                 </form>
             </div>
