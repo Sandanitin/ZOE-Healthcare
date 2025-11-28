@@ -23,6 +23,82 @@ const BookingModal = () => {
         }));
     };
 
+    const getServiceSpecificMessage = (service) => {
+        const baseMessage = `*Patient Details:*
+Name: ${formData.name}
+Age: ${formData.age}
+Gender: ${formData.gender}
+Phone: ${formData.phone}
+WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
+        
+        switch(service) {
+            case 'Doctor Consultations':
+            case 'Online Consultations':
+                return `Hello, I would like to book a *${service}*.
+
+${baseMessage}
+
+*Consultation Details:*
+Preferred consultation type: [Video/Audio/Chat]
+Preferred time: [Morning/Afternoon/Evening]`;
+            
+            case 'Diagnostic Tests':
+            case 'Diagnostics':
+                return `Hello, I would like to book *${service}*.
+
+${baseMessage}
+
+*Test Details:*
+Preferred test type: [Blood Test/Scan/Other]
+Preferred date: [Date]
+Home collection preferred: [Yes/No]`;
+            
+            case 'Pharmacy Services':
+            case 'Pharmacy':
+                return `Hello, I would like to order medicines through *${service}*.
+
+${baseMessage}
+
+*Medicine Details:*
+Prescription attached: [Yes/No]
+Delivery address: [Address]
+Delivery time preferred: [Morning/Afternoon/Evening]`;
+            
+            case 'Home Nursing':
+                return `Hello, I would like to book *${service}*.
+
+${baseMessage}
+
+*Nursing Requirements:*
+Care type needed: [Post-op/Elderly/Chronic]
+Duration: [Hours/Days]
+Start date: [Date]`;
+            
+            case 'Counselling':
+                return `Hello, I would like to book a *${service}* session.
+
+${baseMessage}
+
+*Counselling Details:*
+Concern area: [Stress/Anxiety/Relationship/Family]
+Preferred session type: [Individual/Family]
+Preferred time: [Morning/Afternoon/Evening]`;
+            
+            case 'Nutrition':
+                return `Hello, I would like to book a *${service}* consultation.
+
+${baseMessage}
+
+*Nutrition Goals:*
+Primary goal: [Weight Loss/Gain/Maintenance]
+Dietary preferences: [Vegan/Vegetarian/Other]
+Health conditions: [Diabetes/Hypertension/Other]`;
+            
+            default:
+                return `Hello, I would like to book a consultation for *${service || 'General Inquiry'}*.\n\n${baseMessage}`;
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -46,14 +122,7 @@ const BookingModal = () => {
 
         if (Object.keys(validationErrors).length) return;
 
-        const message = `Hello, I would like to book a consultation for ${selectedService || 'General Inquiry'}.
-    
-Name: ${formData.name}
-Age: ${formData.age}
-Gender: ${formData.gender}
-Phone: ${formData.phone}
-WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
-
+        const message = getServiceSpecificMessage(selectedService);
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/919581224365?text=${encodedMessage}`;
 
@@ -75,22 +144,6 @@ WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
                 </div>
 
                 <form onSubmit={handleSubmit} className="p-6 space-y-5">
-                    <div className="flex items-start gap-3 bg-blue-50 p-4 rounded-xl text-sm text-primary-800">
-                        <div className="flex-shrink-0 mt-0.5">
-                            <input
-                                type="checkbox"
-                                id="sameNumber"
-                                name="sameNumber"
-                                checked={formData.sameNumber}
-                                onChange={handleChange}
-                                className="w-4 h-4 text-accent-500 rounded border-gray-300 focus:ring-accent-500"
-                            />
-                        </div>
-                        <label htmlFor="sameNumber" className="leading-relaxed cursor-pointer">
-                            My mobile number 9581224365 and my WhatsApp number are the same.
-                        </label>
-                    </div>
-
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                             Patient&apos;s Full Name<span className="text-red-500">*</span>

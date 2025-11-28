@@ -1,8 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { useBooking } from '../context/BookingContext';
 
 const Footer = () => {
+    const { openBooking } = useBooking();
+
+    const services = [
+        'Doctor Consultations',
+        'Diagnostic Tests',
+        'Pharmacy Services',
+        'Home Nursing',
+        'Counselling',
+        'Nutrition'
+    ];
+
     return (
         <footer className="bg-primary-900 text-white pt-16 pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,12 +73,16 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-bold mb-6">Our Services</h3>
                         <ul className="space-y-4">
-                            <li className="text-primary-200">Doctor Consultations</li>
-                            <li className="text-primary-200">Diagnostic Tests</li>
-                            <li className="text-primary-200">Pharmacy Services</li>
-                            <li className="text-primary-200">Home Nursing</li>
-                            <li className="text-primary-200">Counselling</li>
-                            <li className="text-primary-200">Nutrition</li>
+                            {services.map((service, index) => (
+                                <li key={index}>
+                                    <button 
+                                        onClick={() => openBooking(service)}
+                                        className="text-primary-200 hover:text-accent-500 transition-colors text-left w-full"
+                                    >
+                                        {service}
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
