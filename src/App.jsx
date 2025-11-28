@@ -8,6 +8,8 @@ import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ServicesPage from './components/ServicesPage';
 import ContactPage from './components/ContactPage';
+import TermsPage from './components/TermsPage';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import ScrollToTop from './components/ScrollToTop';
 import BookingModal from './components/BookingModal';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -25,6 +27,8 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
             </Routes>
           </main>
           <Footer />

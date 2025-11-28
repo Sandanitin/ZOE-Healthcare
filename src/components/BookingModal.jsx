@@ -7,9 +7,8 @@ const BookingModal = () => {
     const [formData, setFormData] = useState({
         name: '',
         age: '',
-        email: '',
+        phone: '',
         gender: '',
-        consent: false,
         sameNumber: true
     });
     const [errors, setErrors] = useState({});
@@ -38,8 +37,11 @@ const BookingModal = () => {
         }
 
         if (!formData.gender) validationErrors.gender = 'Please select a gender';
-        if (!formData.consent) validationErrors.consent = 'Please accept terms';
-
+        if (!formData.phone.trim()) {
+            validationErrors.phone = 'Please enter a contact number';
+        } else if (!/^\d{8,15}$/.test(formData.phone.trim())) {
+            validationErrors.phone = 'Enter a valid phone number';
+        }
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length) return;
@@ -49,7 +51,7 @@ const BookingModal = () => {
 Name: ${formData.name}
 Age: ${formData.age}
 Gender: ${formData.gender}
-Email: ${formData.email || 'Not provided'}
+Phone: ${formData.phone}
 WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
 
         const encodedMessage = encodeURIComponent(message);
@@ -104,40 +106,35 @@ WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
                         {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                     </div>
 
-                    <div className="flex items-end gap-4">
-                        <div className="flex-1">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Patient&apos;s Age<span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="number"
-                                name="age"
-                                min="0"
-                                value={formData.age}
-                                onChange={handleChange}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
-                                placeholder="Please fill in Age"
-                            />
-                            {errors.age && <p className="text-xs text-red-500 mt-1">{errors.age}</p>}
-                        </div>
-                        <div className="w-24">
-                            <label className="block text-sm font-medium text-gray-700 mb-1 text-center">Years</label>
-                            <div className="px-4 py-2 rounded-lg border border-gray-200 text-gray-500 text-center select-none">
-                                ▼
-                            </div>
-                        </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Patient&apos;s Age<span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="number"
+                            name="age"
+                            min="0"
+                            value={formData.age}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
+                            placeholder="Please fill in Age"
+                        />
+                        {errors.age && <p className="text-xs text-red-500 mt-1">{errors.age}</p>}
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Patient&apos;s Email</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Patient&apos;s Phone Number<span className="text-red-500">*</span>
+                        </label>
                         <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
                             onChange={handleChange}
                             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none transition-all"
-                            placeholder="example@mail.com"
+                            placeholder="Enter contact number"
                         />
+                        {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
                     </div>
 
                     <div>
@@ -165,27 +162,11 @@ WhatsApp same as mobile: ${formData.sameNumber ? 'Yes' : 'No'}`;
                         {errors.gender && <p className="text-xs text-red-500 mt-2">{errors.gender}</p>}
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="flex items-start gap-3 text-sm text-gray-700">
-                            <input
-                                type="checkbox"
-                                name="consent"
-                                checked={formData.consent}
-                                onChange={handleChange}
-                                className="mt-1 w-4 h-4 rounded border-gray-300 text-accent-500 focus:ring-accent-500"
-                            />
-                            <span>
-                                I understand that telemedicine uses electronic communication technologies by healthcare professionals. I hereby consent to receiving digital telemedicine services from ZOE Healthcare.
-                            </span>
-                        </label>
-                        {errors.consent && <p className="text-xs text-red-500">{errors.consent}</p>}
-                    </div>
-
                     <button
                         type="submit"
                         className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
                     >
-                        STEP 2 - PROCEED TO PAY ₹199
+                        Proceed to WhatsApp
                     </button>
                 </form>
             </div>

@@ -24,7 +24,12 @@ const Footer = () => {
                             <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
                                 <FaTwitter />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+                            <a
+                                href="https://www.instagram.com/zoe_health_care?igsh=dzc4dDZxdnJmbzc4&utm_source=qr"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors"
+                            >
                                 <FaInstagram />
                             </a>
                             <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
@@ -85,10 +90,15 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 text-center">
-                    <p className="text-primary-300">
+                <div className="border-t border-white/10 pt-8">
+                    <p className="text-primary-300 text-center mb-4">
                         &copy; {new Date().getFullYear()} ZOE Healthcare. All rights reserved.
                     </p>
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-primary-300">
+                        <Link to="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
+                        <span className="text-white/30">|</span>
+                        <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                    </div>
                 </div>
             </div>
         </footer>
