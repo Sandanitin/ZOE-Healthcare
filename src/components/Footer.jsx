@@ -22,7 +22,7 @@ const Footer = () => {
                     {/* Company Info */}
                     <div>
                         <Link to="/" className="flex items-center mb-6">
-                            <span className="text-3xl font-bold text-white">ZOE</span>
+                            <span className="text-3xl font-bold text-white">ZEO</span>
                             <span className="text-3xl font-light text-accent-500 ml-1">Healthcare</span>
                         </Link>
                         <p className="text-primary-200 mb-6 leading-relaxed">
@@ -108,7 +108,7 @@ const Footer = () => {
 
                 <div className="border-t border-white/10 pt-8">
                     <p className="text-primary-300 text-center mb-4">
-                        &copy; {new Date().getFullYear()} ZOE Healthcare. All rights reserved.
+                        &copy; {new Date().getFullYear()} ZEO Healthcare. All rights reserved.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-primary-300">
                         <Link to="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>

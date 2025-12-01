@@ -1,95 +1,116 @@
 import React from 'react';
 
 const AboutPage = () => {
+    const features = [
+        {
+            title: 'Expert Medical Team',
+            description: 'Our team consists of certified doctors, nurses, and healthcare professionals with years of experience in their respective fields.'
+        },
+        {
+            title: 'Advanced Technology',
+            description: 'We utilize cutting-edge medical technology and digital platforms to provide accurate diagnoses and efficient services.'
+        },
+        {
+            title: 'Personalized Care',
+            description: 'Every patient receives individualized attention and care plans tailored to their specific health needs and conditions.'
+        },
+        {
+            title: '24/7 Support',
+            description: 'Our dedicated support team is available around the clock to assist with appointments, inquiries, and emergencies.'
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Hero Banner */}
+            {/* Hero Section */}
             <section className="bg-primary-900 text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6">About Us</h1>
-                    <p className="text-xl text-primary-200 max-w-2xl mx-auto">
-                        Dedicated to providing exceptional healthcare with a personal touch.
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6">About ZEO Healthcare</h1>
+                    <p className="text-xl text-primary-200 max-w-3xl mx-auto">
+                        Your trusted partner in health and wellness, providing comprehensive medical services with compassion and expertise.
                     </p>
                 </div>
             </section>
 
-            {/* Who We Are Section */}
-            <section className="section-padding bg-white">
+            {/* Mission & Vision */}
+            <section className="section-padding">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="order-2 md:order-1">
-                            <div className="rounded-3xl overflow-hidden shadow-2xl relative">
-                                <img
-                                    src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2000&auto=format&fit=crop"
-                                    alt="Medical Team"
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                                    <p className="text-white text-lg italic font-medium">
-                                        &ldquo;We treat every patient with empathy, kindness, and understanding.&rdquo;
-                                    </p>
-                                </div>
-                            </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 className="text-3xl font-bold text-primary-900 mb-6">Our Mission</h2>
+                            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                                To make quality healthcare accessible to everyone by leveraging technology and compassionate care. 
+                                We strive to provide personalized medical solutions that empower our patients to live healthier, 
+                                more fulfilling lives.
+                            </p>
+                            <h2 className="text-3xl font-bold text-primary-900 mb-6">Our Vision</h2>
+                            <p className="text-gray-700 text-lg leading-relaxed">
+                                To be the leading healthcare provider that bridges the gap between traditional medicine and 
+                                modern technology, creating a seamless healthcare experience that prioritizes patient outcomes 
+                                and satisfaction.
+                            </p>
                         </div>
-
-                        <div className="order-1 md:order-2">
-                            <span className="text-accent-600 font-bold tracking-wider uppercase text-sm mb-2 block">
-                                Who We Are
-                            </span>
-                            <h2 className="text-4xl font-bold text-primary-900 mb-6">
-                                Redefining Healthcare Accessibility
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                                ZOE Healthcare is a comprehensive health service provider offering medical consultations,
-                                diagnostic laboratory services, pharmacy support, home nursing care, counselling, and
-                                nutrition guidance.
-                            </p>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Our mission is to deliver accessible and compassionate healthcare by blending technology
-                                with professional expertise, making quality medical care available to everyone.
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="bg-primary-50 p-6 rounded-xl border border-primary-100 text-center">
-                                    <div className="text-4xl font-bold text-accent-600 mb-2">5+</div>
-                                    <div className="text-primary-900 font-medium">Years Experience</div>
-                                </div>
-                                <div className="bg-primary-50 p-6 rounded-xl border border-primary-100 text-center">
-                                    <div className="text-4xl font-bold text-accent-600 mb-2">10k+</div>
-                                    <div className="text-primary-900 font-medium">Happy Patients</div>
-                                </div>
+                        <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
+                            <div className="bg-gray-300 border-2 border-dashed rounded-xl w-full h-full flex items-center justify-center text-gray-500">
+                                Mission & Vision Image
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Vision */}
-            <section className="section-padding bg-gray-50">
+            {/* Why Choose Us */}
+            <section className="section-padding bg-white">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div className="bg-white rounded-3xl p-10 shadow-lg border border-gray-100">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl">🎯</span>
-                                <h3 className="text-3xl font-bold text-primary-900">Our Mission</h3>
-                            </div>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                                To deliver accessible and compassionate healthcare by blending technology with
-                                professional expertise. We strive to make quality medical services available to
-                                everyone, regardless of location or circumstance.
-                            </p>
-                        </div>
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Why Choose ZEO Healthcare?</h2>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                            We combine medical expertise with cutting-edge technology to deliver exceptional healthcare services.
+                        </p>
+                    </div>
 
-                        <div className="bg-white rounded-3xl p-10 shadow-lg border border-gray-100">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl">🌟</span>
-                                <h3 className="text-3xl font-bold text-primary-900">Our Vision</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {features.map((feature, index) => (
+                            <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
+                                <h3 className="text-xl font-bold text-primary-900 mb-3">{feature.title}</h3>
+                                <p className="text-gray-600">{feature.description}</p>
                             </div>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                                We aim to become a trusted healthcare partner for families by offering round-the-clock
-                                medical support and home-based services that prioritize patient comfort, safety, and wellbeing.
-                            </p>
-                        </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Story */}
+            <section className="section-padding">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Our Story</h2>
+                    </div>
+                    
+                    <div className="prose prose-lg max-w-none">
+                        <p className="text-gray-700 mb-6">
+                            ZEO Healthcare was founded with a simple yet powerful vision: to make quality healthcare accessible, 
+                            affordable, and convenient for everyone. What started as a small clinic has evolved into a comprehensive 
+                            healthcare platform that serves thousands of patients across the region.
+                        </p>
+                        
+                        <p className="text-gray-700 mb-6">
+                            Our journey began when our founder, Dr. Nabi Vali, recognized the gaps in traditional healthcare delivery. 
+                            With a passion for innovation and patient care, he assembled a team of dedicated professionals who shared 
+                            his vision of transforming healthcare through technology and personalized attention.
+                        </p>
+                        
+                        <p className="text-gray-700 mb-6">
+                            Today, ZEO Healthcare offers a wide range of services including online consultations, diagnostic testing, 
+                            pharmacy services, home nursing care, and specialized wellness programs. Our commitment to excellence 
+                            and patient satisfaction has made us a trusted name in healthcare.
+                        </p>
+                        
+                        <p className="text-gray-700">
+                            As we continue to grow, our core values remain unchanged: compassion, integrity, innovation, and excellence. 
+                            We are dedicated to continuously improving our services and expanding our reach to serve more communities 
+                            with the quality healthcare they deserve.
+                        </p>
                     </div>
                 </div>
             </section>

@@ -76,7 +76,7 @@ const HomePage = () => {
     ];
 
     const handleWhatsAppClick = (serviceName) => {
-        const message = `Hi ZOE Healthcare, I'm interested in ${serviceName}. Please share more details.`;
+        const message = `Hi ZEO Healthcare, I'm interested in ${serviceName}. Please share more details.`;
         const whatsappUrl = `https://wa.me/919581224365?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     };
@@ -108,13 +108,13 @@ const HomePage = () => {
         <>
             <SEO 
                 title="Expert Healthcare Services at Your Convenience"
-                description="ZOE Healthcare brings doctor consultations, diagnostic tests, pharmacy support, home nursing care, counselling & nutrition services — all in one place. Accessible, reliable, and patient-focused care."
+                description="ZEO Healthcare brings doctor consultations, diagnostic tests, pharmacy support, home nursing care, counselling & nutrition services — all in one place. Accessible, reliable, and patient-focused care."
                 keywords="healthcare services, doctor consultations, diagnostic services, pharmacy, home nursing, medical counselling, nutrition services, telemedicine, online doctor"
                 canonicalUrl="https://zoe-healthcare.com/"
                 structuredData={{
                     "@context": "https://schema.org",
                     "@type": "HealthcareOrganization",
-                    "name": "ZOE Healthcare",
+                    "name": "ZEO Healthcare",
                     "url": "https://zoe-healthcare.com",
                     "logo": "https://zoe-healthcare.com/images/logo.png",
                     "description": "Complete healthcare services including doctor consultations, diagnostics, pharmacy, home nursing, counselling and nutrition services.",
@@ -131,9 +131,9 @@ const HomePage = () => {
                         "availableLanguage": ["English", "Hindi"]
                     },
                     "sameAs": [
-                        "https://www.facebook.com/ZOEHealthcare",
-                        "https://www.twitter.com/ZOEHealthcare",
-                        "https://www.instagram.com/ZOEHealthcare"
+                        "https://www.facebook.com/ZEOHealthcare",
+                        "https://www.twitter.com/ZEOHealthcare",
+                        "https://www.instagram.com/ZEOHealthcare"
                     ],
                     "openingHours": "Mo-Su 00:00-23:59",
                     "priceRange": "$$",
@@ -198,8 +198,8 @@ const HomePage = () => {
                             key={index}
                             onClick={() => setCurrentSlide(index)}
                             className={`h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                                ? 'bg-accent-500 w-10'
-                                : 'bg-white/50 w-3 hover:bg-white'
+                                ? 'w-8 bg-white'
+                                : 'w-3 bg-white/50 hover:bg-white/75'
                                 }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
@@ -207,195 +207,85 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Intro Section */}
+            {/* Services Section */}
             <section className="section-padding bg-white">
-                <div className="max-w-4xl mx-auto text-center">
-                    <span className="text-accent-600 font-bold tracking-wider uppercase text-sm mb-2 block">
-                        Welcome to ZOE Healthcare
-                    </span>
-                    <h2 className="text-3xl md:text-5xl font-bold text-primary-900 mb-6 leading-tight">
-                        Complete Healthcare Services at <span className="text-accent-600">Your Convenience</span>
-                    </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                        ZOE Healthcare brings doctor consultations, diagnostic tests, pharmacy support,
-                        home nursing care, counselling & nutrition services — all in one place.
-                        Accessible, reliable, and patient-focused care designed for your modern lifestyle.
-                    </p>
-                </div>
-            </section>
-
-            {/* Services Grid */}
-            <section className="section-padding bg-gray-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-primary-900 mb-4">Our Core Services</h2>
-                        <div className="w-24 h-1 bg-accent-500 mx-auto rounded-full"></div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Our Healthcare Services</h2>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                            Comprehensive medical solutions tailored to your needs. From consultations to home care, we cover it all.
+                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {services.map((service, index) => (
                             <div
                                 key={index}
-                                className="glass-card p-8 group hover:-translate-y-2 transition-all duration-300"
+                                className={`bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col ${
+                                    service.highlight ? 'border-accent-300 border-2' : ''
+                                    }`}
                             >
-                                <div className="w-16 h-16 rounded-2xl bg-primary-50 text-4xl flex items-center justify-center mb-6 group-hover:bg-primary-900 group-hover:text-white transition-colors duration-300">
-                                    {service.icon}
-                                </div>
-                                <h3 className="text-xl font-bold text-primary-900 mb-3 group-hover:text-primary-700">
-                                    {service.title}
-                                </h3>
-                                <p className="text-gray-600 mb-6 leading-relaxed">
-                                    {service.description}
-                                </p>
-                                <div className="flex items-center gap-4 mt-6">
-                                    <Link to="/services" className="text-accent-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                                        Learn More <span>→</span>
-                                    </Link>
-                                    <button
-                                        type="button"
-                                        onClick={() => handleWhatsAppClick(service.title)}
-                                        className="text-green-600 font-semibold flex items-center gap-2 hover:text-green-700 transition-colors"
-                                    >
-                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 9.888-5.335 9.891-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                                        </svg>
-                                        WhatsApp
-                                    </button>
-                                </div>
+                                <div className="text-accent-600 text-3xl mb-4">{service.icon}</div>
+                                <h3 className="text-xl font-bold text-primary-900 mb-3">{service.title}</h3>
+                                <p className="text-gray-600 mb-4 flex-grow">{service.description}</p>
+                                <button
+                                    onClick={() => handleWhatsAppClick(service.title)}
+                                    className="text-accent-600 font-semibold hover:text-accent-700 transition-colors flex items-center gap-2"
+                                >
+                                    Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                                    </svg>
+                                </button>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Who We Are Section */}
-            <section className="section-padding bg-white">
+            {/* Benefits Section */}
+            <section className="section-padding">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <span className="text-accent-600 font-bold tracking-wider uppercase text-sm mb-2 block">
-                                Who We Are
-                            </span>
-                            <h2 className="text-4xl font-bold text-primary-900 mb-6">
-                                Redefining Healthcare Accessibility
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                                ZOE Healthcare is a comprehensive health service provider offering medical consultations,
-                                diagnostic laboratory services, pharmacy support, home nursing care, counselling, and
-                                nutrition guidance.
-                            </p>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Our mission is to deliver accessible and compassionate healthcare by blending technology
-                                with professional expertise, making quality medical care available to everyone.
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="bg-primary-50 p-6 rounded-xl border border-primary-100">
-                                    <div className="text-4xl font-bold text-accent-600 mb-2">5+</div>
-                                    <div className="text-primary-900 font-medium">Years Experience</div>
-                                </div>
-                                <div className="bg-primary-50 p-6 rounded-xl border border-primary-100">
-                                    <div className="text-4xl font-bold text-accent-600 mb-2">10k+</div>
-                                    <div className="text-primary-900 font-medium">Happy Patients</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="relative">
-                            <div className="rounded-3xl overflow-hidden shadow-2xl">
-                                <img
-                                    src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2000&auto=format&fit=crop"
-                                    alt="Medical Team"
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden md:block border border-gray-100">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center text-accent-600 text-2xl">
-                                        🏥
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-primary-900">Trusted Care</p>
-                                        <p className="text-sm text-gray-600">Excellence in every service</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Why Choose Us */}
-            <section className="section-padding bg-primary-900 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-primary-800 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-600 rounded-full blur-3xl opacity-10 translate-y-1/2 -translate-x-1/2"></div>
-
-                <div className="max-w-7xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4">Why Choose ZOE Healthcare?</h2>
-                        <p className="text-primary-200 text-lg max-w-2xl mx-auto">
-                            We are dedicated to providing the best care for you and your family with our comprehensive approach to health and wellness.
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Why Choose ZEO Healthcare?</h2>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                            We combine medical expertise with cutting-edge technology to deliver exceptional healthcare services.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {benefits.map((benefit, index) => (
-                            <div
-                                key={index}
-                                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300"
-                            >
-                                <div className="text-5xl mb-6">{benefit.icon}</div>
-                                <h3 className="text-xl font-bold mb-3 text-white">{benefit.title}</h3>
-                                <p className="text-primary-200">{benefit.description}</p>
+                            <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
+                                <div className="text-4xl mb-4">{benefit.icon}</div>
+                                <h3 className="text-xl font-bold text-primary-900 mb-2">{benefit.title}</h3>
+                                <p className="text-gray-600">{benefit.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Vision */}
-            <section className="section-padding bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div className="bg-primary-50 rounded-3xl p-10 border border-primary-100">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl">🎯</span>
-                                <h3 className="text-3xl font-bold text-primary-900">Our Mission</h3>
-                            </div>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                                To deliver accessible and compassionate healthcare by blending technology with
-                                professional expertise. We strive to make quality medical services available to
-                                everyone, regardless of location or circumstance.
-                            </p>
-                        </div>
-
-                        <div className="bg-accent-50 rounded-3xl p-10 border border-accent-100">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl">🌟</span>
-                                <h3 className="text-3xl font-bold text-primary-900">Our Vision</h3>
-                            </div>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                                We aim to become a trusted healthcare partner for families by offering round-the-clock
-                                medical support and home-based services that prioritize patient comfort, safety, and wellbeing.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Call to Action */}
-            <section className="py-20 bg-gradient-to-r from-accent-500 to-accent-600 text-white text-center">
-                <div className="max-w-4xl mx-auto px-4">
-                    <h2 className="text-4xl font-bold mb-6">Ready to Prioritize Your Health?</h2>
-                    <p className="text-xl text-white/90 mb-10">
-                        Book a consultation today and experience healthcare reimagined.
+            {/* CTA Section */}
+            <section className="section-padding bg-primary-900 text-white">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience Quality Healthcare?</h2>
+                    <p className="text-xl text-primary-200 mb-8 max-w-2xl mx-auto">
+                        Join thousands of satisfied patients who trust ZEO Healthcare for their medical needs.
                     </p>
-                    <button
-                        onClick={() => openBooking('General Consultation')}
-                        className="bg-white text-accent-600 px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block"
-                    >
-                        Book Appointment Now
-                    </button>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button
+                            onClick={() => openBooking('General Consultation')}
+                            className="bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+                        >
+                            Book Consultation
+                        </button>
+                        <Link
+                            to="/contact"
+                            className="border-2 border-white text-white hover:bg-white hover:text-primary-900 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg text-center"
+                        >
+                            Contact Us
+                        </Link>
+                    </div>
                 </div>
             </section>
         </div>
